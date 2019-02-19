@@ -41,7 +41,7 @@ namespace UnitTestProject8
                 driver.FindElement(By.Name("send_to")).SendKeys(reciever);
                 driver.FindElement(By.Name("subject")).SendKeys(subject);
                 driver.FindElement(By.Name("body")).SendKeys(text);
-                driver.FindElement(By.XPath("//*[@id=\"b3_cnt\"]/div[2]/div[1]/div[1]/input[2]")).Click();
+                driver.FindElement(By.ClassName("panel_submit")).Click();
             }
 
             void CheckMail()
@@ -51,15 +51,16 @@ namespace UnitTestProject8
                 driver.FindElement(By.ClassName("input-group-btn")).Click();
 
                 driver.FindElement(By.XPath("//table//*[contains(text(), '"+subject+"')]")).Click();
+
+                string recievedMailBody = driver.FindElement(By.ClassName("x_content")).Text;
+
+                Assert.AreEqual(text, recievedMailBody);
             }
 
             LoginAs();
             GoToNewLetter();
             Writeletter();
             CheckMail();
-
-
-
         }
     }
 }
