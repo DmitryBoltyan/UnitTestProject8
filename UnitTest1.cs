@@ -50,7 +50,7 @@ namespace UnitTestProject8
                 driver.FindElement(By.Id("inboxfield")).SendKeys(reciever);
                 driver.FindElement(By.ClassName("input-group-btn")).Click();
 
-                driver.FindElement(By.XPath("//table//*[contains(text(), 'Болтян Дмитрий')]")).Click();
+                driver.FindElement(By.XPath("//table//*[contains(text(), '"+subject+"')]")).Click();
             }
 
             LoginAs();
