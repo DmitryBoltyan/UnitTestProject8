@@ -52,15 +52,18 @@ namespace UnitTestProject8
 
                 driver.FindElement(By.XPath("//table//*[contains(text(), '"+subject+"')]")).Click();
 
-                string recievedMailBody = driver.FindElement(By.ClassName("x_content")).Text;
+                driver.SwitchTo().Frame("msg_body");
 
-                Assert.AreEqual(text, recievedMailBody);
+                var elem = driver.FindElement(By.XPath("//*[contains(.,'"+text+"')]"));
+                if (elem == null) Console.WriteLine("Письмо не содержит заданный текст");
             }
 
             LoginAs();
             GoToNewLetter();
             Writeletter();
             CheckMail();
+
+            driver.Quit();
         }
     }
 }
