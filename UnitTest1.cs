@@ -19,6 +19,7 @@ namespace UnitTestProject8
             string text = "Текст тестового сообщения + " + rand.Next(0, 1000);
             string reciever = "test0305reciever@mailinator.com";
 
+            Новые изменения
 
         }
     }
